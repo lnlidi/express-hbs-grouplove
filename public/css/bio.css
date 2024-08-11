@@ -1,0 +1,42 @@
+.contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5vh;
+    font-size: 4vh;
+}
+
+.shortcuts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2vh;
+    line-height: 150%;
+    font-size: 3vh;
+}
+
+.shortcuts a { color: rgba(0, 0, 0, 0.4); transition: all ease 0.3s; }
+
+.shortcuts a:hover { color: rgba(0, 0, 0, 1); }
+
+details summary::-webkit-details-marker { display: none }
+details > summary { list-style: none; }
+details[open] summary { font-weight: bold; }
+
+.details { margin-bottom: 5vh; display: flex; }
+
+summary {
+    user-select: none;
+    display: flex;
+    font-family: Noto_Sans-ExtraLight;
+    font-size: 4vh;
+}
+
+summary h3 { transition: all ease 0.3s; }
+
+summary h3:hover { transform: scale(1.1); }
+
+.text {
+    margin: 2vh 2vw;
+    font-size: 150%;
+}
