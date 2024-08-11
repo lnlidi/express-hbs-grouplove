@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,60 +18,53 @@
     <link rel="stylesheet" href="/css/footer.css">
     <title>{{mainTitle}}</title>
 </head>
+
 <body>
     {{>header}}
 
     <main>
         {{{body}}}
     </main>
-    
-    <a class="up" id="up" onclick="up()"><img src="/img/icons/right-up.svg"></a>
+
+    <a class="scroll-up-btn" id="scroll-up-btn" onclick="scrollUp()"><img src="/img/icons/right-up.svg"></a>
 
     <script>
-        const upBtn = document.getElementById("up");
+        const scrollUpBtn = document.getElementById("scroll-up-btn");
         var upShow = false;
-        var curH = 800;
+        var curH = 400;
 
-        window.onscroll = function() {scrollFunction()};
+        window.onscroll = function () { scrollFunction() };
         function scrollFunction() {
             if (document.documentElement.scrollTop >= curH || document.body.scrollTop >= curH) { showUpBtn(); }
             else { hideUpBtn(); }
         };
 
-        function up() {
+        function scrollUp() {
             scroll({ top: 0, behavior: "smooth" });
-            hideUpBtn();
         }
 
         function showUpBtn() {
-            if(!upShow) {
+            if (!upShow) {
                 upShow = true;
-                upBtn.style.display = "block";
-                upBtn.animate(
-                    [
-                        { transform: 'translate3D(0, -5vh, 0)', opacity: 0 },
-                        { transform: 'translate3D(0, 0, 0)' }
-                    ],
-                    { duration: 200 }
-                );
+                scrollUpBtn.style.display = "block";
+                window.setTimeout(function () {
+                    scrollUpBtn.style.opacity = 0.4;
+                }, 100);
             }
         }
 
         function hideUpBtn() {
-            if(upShow) {
+            if (upShow) {
                 upShow = false;
-                upBtn.animate(
-                    [
-                        { transform: 'translate3D(0, 0, 0)' },
-                        { transform: 'translate3D(0, 5vh, 0)', opacity: 0 }
-                    ],
-                    { duration: 200 }
-                );
-                window.setTimeout(function(){ upBtn.style.display = ""; }, 200);
+                scrollUpBtn.style.opacity = null;
+                window.setTimeout(function () {
+                    scrollUpBtn.style.display = null;
+                }, 100);
             }
         }
     </script>
 
     {{!-- {{>footer}} --}}
 </body>
+
 </html>

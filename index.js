@@ -15,25 +15,35 @@ app.use(express.static(__dirname + '/public'))
  
 const  carouselImg = [
     {
-        nameImg: "Grouplove_1.jpg"
+        nameImg: "Grouplove_1.jpg",
+        widthImg: 1920,
+        heightImg: 1080
     },
     {
-        nameImg: "Grouplove_2.jpg"
+        nameImg: "Grouplove_2.jpg",
+        widthImg: 1170,
+        heightImg: 659
     },
     {
-        nameImg: "Grouplove_3.jpg"
+        nameImg: "Grouplove_3.jpg",
+        widthImg: 2000,
+        heightImg: 1333
     },
     {
-        nameImg: "Grouplove_4.webp"
+        nameImg: "Grouplove_4.webp",
+        widthImg: 1548,
+        heightImg: 1024
     },
     {
-        nameImg: "Grouplove_5.jpg"
+        nameImg: "Grouplove_5.jpg",
+        widthImg: 1990,
+        heightImg: 1089
     },
 ]
 
 // Home
 app.get('/', (req, res) => {
-    res.render('home', {name: 'Diana', mainTitle: 'Home', carouselImg: carouselImg})
+    res.render('home', {name: 'Grouplove', mainTitle: 'Home', carouselImg: carouselImg})
 })
 
 const disc = [

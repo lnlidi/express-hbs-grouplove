@@ -1,16 +1,29 @@
+:root {
+	--font-size-header: 24px;
+	--padding-inline: 40px;
+	--font-size-h1: 48px;
+	--font-size-h2: 24px;
+	--font-size-h3: 16px;
+	--font-size-p: 14px;
+
+	--height-icons: 48px;
+}
+
 body {
-    overflow-y: scroll;
-	height: 100vh;
-	display: flex; 
-	flex-direction: column;
+	max-width: 1920px;
+	margin: auto;
+	overflow-y: scroll;
 }
 
-a {
+a,
+button,
+img {
 	user-select: none;
-    text-decoration: none;
+	text-decoration: none;
 }
 
-h1, h2 {
+h1,
+h2 {
 	font-family: Koulen;
 }
 
@@ -18,24 +31,42 @@ p {
 	font-family: Nunito-Light;
 }
 
-.main { padding: 5vh 15vw; }
-
-.up {
-	display: none;
-	position: fixed;
-	height: 5vh;
-	bottom: 0;
-	right: 0;
-	margin-right: 10vh;
-	margin-bottom: 10vh;
-	padding: 2vh;
-	border-radius: 100vh;
-	opacity: .4;
-	background-color: rgba(0, 0, 0, 1);
-	transition: all 0.4s;
+.main {
+	padding-block: 48px;
+	padding-inline: var(--padding-inline);
 }
 
-.up:hover { opacity: 0.6; }
-.up:active { opacity: 1; transition: all 0.2s; }
+.scroll-up-btn {
+	display: none;
+	position: fixed;
+	height: var(--height-icons);
+	bottom: 5vh;
+	right: 5vw;
+	padding: 8px;
+	border-radius: 50%;
+	opacity: 0;
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 1);
+	box-sizing: border-box;
+}
 
-.up img { height: 100%; filter: invert(100%); }
+
+@media screen and (hover:hover) {
+	.scroll-up-btn {
+		transition: all ease 0.3s;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+}
+
+.scroll-up-btn:active {
+	opacity: 1;
+	transition: all ease 0.2s;
+}
+
+.scroll-up-btn img {
+	height: 100%;
+	filter: invert(100%);
+}

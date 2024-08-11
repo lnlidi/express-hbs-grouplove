@@ -1,26 +1,30 @@
-<div class="carousel" id="carousel">
-    <button class="grouplove" id="grouplove" onclick="showFull()">
-        <h1> Grouplove </h1>
-        <p> 
-            is an American alternative rock band that was formed in 2009 by
+<div class="carousel-container" id="carousel-container">
+    <button class="carousel-promo" id="carousel-promo" onclick="showFull()">
+        <h1>Grouplove</h1>
+        <p>is an American alternative rock band that was formed in 2009 by
             Hannah Hooper (vocals, keyboards),
             Christian Zucconi (vocals, guitar),
             Sean Gadd (bass),
             Andrew Wessen (guitar, vocals),
             and Ryan Rabin (drums).
         </p>
-        <img src="img/icons/maximize.svg" class="max" id="max">
+        <img src="img/icons/maximize.svg" class="max-btn" id="max-btn">
     </button>
-    
+
     {{#each carouselImg}}
-        <div class="carousel-img slide">
-            <img src="img/band/{{nameImg}}">
-        </div>
+    <div class="carousel-img slide">
+        <img src="img/band/{{nameImg}}" height={{heightImg}} width={{widthImg}}>
+    </div>
     {{/each}}
-    
-    <a class="prev" id="prev" onclick="plusSlides(-1)"><img src="img/icons/left.svg" class="left" id="left"></a>
-    <a class="next" id="next" onclick="plusSlides(1)"><img src="img/icons/right.svg" class="right" id="right"></a>
-    <img src="img/icons/minimize.svg" class="min" id="min">
+
+    <a class="prev-btn" id="prev-btn" onclick="plusSlides(-1)">
+        <img src="img/icons/left.svg" class="left" id="left">
+    </a>
+    <a class="next-btn" id="next-btn" onclick="plusSlides(1)">
+        <img src="img/icons/right.svg" class="right" id="right">
+    </a>
+
+    <img src="img/icons/minimize.svg" class="min-btn" id="min-btn">
 </div>
 
 <script>
@@ -35,41 +39,41 @@
     function showSlides(n) {
         let i;
         let slides = document.getElementsByClassName("carousel-img");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
         for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
         }
-        slides[slideIndex-1].style.display = "block";
+        slides[slideIndex - 1].style.display = "flex";
     }
 
     function showFull() {
-        var gl = document.getElementById("grouplove");
-        var cs = document.getElementById("carousel");
-        var pr = document.getElementById("prev");
-        var ne = document.getElementById("next");
-        var mm = document.getElementById("min");
-        const offsetTop = document.getElementById('carousel').offsetTop;
-        if(show){
+        var carouselContainer = document.getElementById("carousel-container");
+        var carouselPromo = document.getElementById("carousel-promo");
+        var prevBtn = document.getElementById("prev-btn");
+        var nextBtn = document.getElementById("next-btn");
+        var minBtn = document.getElementById("min-btn");
+        const offsetTop = carouselContainer.offsetTop;
+        if (show) {
             show = false;
-            pr.style.zIndex = 1;
-            ne.style.zIndex = 1;
-            gl.style.opacity = "1";
-            cs.style.maxHeight = "";
-            mm.style.display = "";
+            prevBtn.style.zIndex = null;
+            nextBtn.style.zIndex = null;
+            carouselPromo.style.opacity = null;
+            carouselContainer.style.maxHeight = null;
+            minBtn.style.display = null;
             scroll({
                 top: offsetTop,
                 behavior: "smooth"
             });
-            
+
         }
         else {
             show = true;
-            pr.style.zIndex = 3;
-            ne.style.zIndex = 3;
-            gl.style.opacity = "0";
-            cs.style.maxHeight = "100vh";
-            mm.style.display = "flex";
+            carouselContainer.style.maxHeight = "1080px";
+            carouselPromo.style.opacity = "0";
+            prevBtn.style.zIndex = 3;
+            nextBtn.style.zIndex = 3;
+            minBtn.style.display = "flex";
             scroll({
                 top: offsetTop,
                 behavior: "smooth"
